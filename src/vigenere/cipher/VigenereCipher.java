@@ -24,22 +24,39 @@ public class VigenereCipher {
         //Encryption 
         String key = "banana";
         StringBuffer encryptedStr = new StringBuffer();
+        StringBuffer decryptedStr = new StringBuffer();
         int j = 0;
         for (int i = 0; i < str.length(); i++) {
             char ch;
             if (Character.isLowerCase(str.charAt(i))) {
-                ch = (char) (((int) ((str.charAt(i) + (int)(key.charAt(j)-97) - 97) % 26) + 97));
+                ch = (char) (((int) ((str.charAt(i) + (int) (key.charAt(j) - 97) - 97) % 26) + 97));
                 j++;
                 j = j % key.length();
             } else {
-                ch = (char) (((int) ((str.charAt(i) + (int)(key.charAt(j)-97) - 97) % 26) + 97));
+                ch = (char) (((int) ((str.charAt(i) + (int) (key.charAt(j) - 65) - 65) % 26) + 65));
                 j++;
                 j = j % key.length();
             }
             encryptedStr.append(ch);
         }
         System.out.println("Encrypted Text : " + encryptedStr);
-        
+        j = 0;
+        for (int i = 0; i < encryptedStr.length(); i++) {
+//            char c = str.charAt(i);
+            char ch;
+            if (Character.isLowerCase(str.charAt(i))) {
+                ch = (char) ((encryptedStr.charAt(i) - key.charAt(j) + 26) % 26 + 97);
+                j++;
+                j = j % key.length();
+            } else {
+                ch = (char) ((encryptedStr.charAt(i) - key.charAt(j) + 26) % 26 + 65);
+                j++;
+                j = j % key.length();
+            }
+            decryptedStr.append(ch);
+        }
+        System.out.println("Decrypted Text : " + decryptedStr);
+
     }
 
 }
