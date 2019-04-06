@@ -42,7 +42,6 @@ public class VigenereCipher {
         System.out.println("Encrypted Text : " + encryptedStr);
         j = 0;
         for (int i = 0; i < encryptedStr.length(); i++) {
-//            char c = str.charAt(i);
             char ch;
             if (Character.isLowerCase(str.charAt(i))) {
                 ch = (char) ((encryptedStr.charAt(i) - key.charAt(j) + 26) % 26 + 97);
